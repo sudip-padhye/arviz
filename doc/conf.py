@@ -23,7 +23,6 @@ import re
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from recommonmark.parser import CommonMarkParser
-import sphinx_bootstrap_theme
 import arviz
 
 class CustomCommonMarkParser(CommonMarkParser):
@@ -118,7 +117,7 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "notebooks/.ipynb_checkpoints"]
+exclude_patterns = ["_build", "build", "Thumbs.db", ".DS_Store", "notebooks/.ipynb_checkpoints"]
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = "sphinx"
@@ -132,36 +131,36 @@ todo_include_todos = False
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = "bootstrap"
+html_theme = "pydata_sphinx_theme"
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-html_theme_options = {
-    "source_link_position": "footer",
-    "navbar_title": " ",
-    "globaltoc_depth": 0,
-    "bootswatch_theme": "paper",
-    "navbar_pagenav": False,
-    "navbar_sidebarrel": False,
-    "navbar_links": [
-        ("Gallery", "examples/index"),
-        ("Quickstart", "notebooks/Introduction"),
-        ("Cookbook", "notebooks/InferenceDataCookbook"),
-        ("InferenceData", "notebooks/XarrayforArviZ"),
-        ("Numba", "notebooks/Numba"),
-        ("API", "api"),
-        ("Usage", "usage"),
-        ("About", "about"),
-    ],
-}
+# html_theme_options = {
+#     "source_link_position": "footer",
+#     "navbar_title": " ",
+#     "globaltoc_depth": 0,
+#     "bootswatch_theme": "paper",
+#     "navbar_pagenav": False,
+#     "navbar_sidebarrel": False,
+#     "navbar_links": [
+#         ("Gallery", "examples/index"),
+#         ("Quickstart", "notebooks/Introduction"),
+#         ("Cookbook", "notebooks/InferenceDataCookbook"),
+#         ("InferenceData", "notebooks/XarrayforArviZ"),
+#         ("Numba", "notebooks/Numba"),
+#         ("API", "api"),
+#         ("Usage", "usage"),
+#         ("About", "about"),
+#     ],
+# }
 
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
+# html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 html_static_path = ["_static", thumb_directory]
 
 # Custom sidebar templates, must be a dictionary that maps document names
@@ -189,7 +188,7 @@ html_favicon = "_static/favicon.ico"
 
 
 def setup(app):
-    app.add_css_file("custom.css")
+    # app.add_css_file("custom.css")
     app.add_source_suffix('.md', 'markdown')
     app.add_source_parser(CustomCommonMarkParser)
 
